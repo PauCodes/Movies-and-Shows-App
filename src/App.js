@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { Routes , Route } from 'react-router-dom';
 import './App.css';
+import Home from './components/Main/Home';
+import ByGenreMovies from './components/Movies/ByGenreMovies';
+import MoviesSection from './components/Movies/MoviesSection';
+import TopRatedMovies from './components/Movies/TopRatedMovies';
+import UpcomingMovies from './components/Movies/UpcomingMovies';
+import ShowsSection from './components/Shows/ShowsSection';
+import BackBtn from './components/UI/BackBtn';
+import TopRatedShows from './components/Shows/TopRatedShows';
+import { MovieProvider } from './context/MovieContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MovieProvider>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Home />}/>   
+          <Route path='/movies' element={<MoviesSection />}/>   
+          <Route path='/shows' element={<ShowsSection />}/>
+          <Route path='/' element={<BackBtn />}/>
+          <Route path='/movies/top_rated' element={<TopRatedMovies />}/>
+          <Route path='/movies/upcoming' element={<UpcomingMovies />}/>
+          <Route path='/movies/by_genre' element={<ByGenreMovies />}/>
+          <Route path='/shows/top_rated' element={<TopRatedShows />}/>
+        </Routes>     
+      </div>
+    </MovieProvider>
   );
 }
 

@@ -1,0 +1,15 @@
+.button {
+  border: none;
+  padding: 20px;
+  width: 300px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.button:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+}
