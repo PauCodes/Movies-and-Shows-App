@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const MovieContext = createContext();
@@ -6,47 +6,49 @@ const MovieContext = createContext();
 export const MovieProvider = ({children}) => {
 
     const url = process.env.REACT_APP_BASE_ENDPOINT;
-    const key = process.env.REACT_APP_KEY;
+    const key = process.env.REACT_APP_KEY;   
+        
 
     const topRatedMoviesUrl = '3/movie/top_rated';
-    const topRatedMovie = [];
-
     const upcomingMoviesUrl = '3/movie/upcoming';
-    const upcomingMovies = [];
+    const moviesGenreNameUrl = '3/genre/movie/list';
+    const moviesByGenreUrl = '3/discover/movie';
 
-    const moviesByGenreUrl = '3/genre/movie/list';
-
-    const topRatedShowsUrl = '3/tv/top_rated';
-    const topRatedShowsArray = [];
+    // const topRatedShowsUrl = '3/tv/top_rated';
 
     const [ showTopRatedMovies, setShowTopRatedMovies ] = useState([]);
     const [ showUpcomingMovies, setShowUpcomingMovies ] = useState([]);
-    const [ showMoviesByGenre, setShowMoviesByGenre ] = useState([]);
-    const [ topRatedShows, setTopRatedShows ] = useState([]);
+    const [ genreCategories, setGenreCategories ] = useState([]);
+    const [ movieCategoryChoice, setMovieCategoryChoice ] = useState([]);
+    const [ movieGenreId, setMovieGenreId ] = useState(null)
+    // const [ topRatedShows, setTopRatedShows ] = useState([]);
+    
 
     //------------------------------- MOVIES -------------------------
     //API CALL FOR TOP RATED MOVIES
-    const fetchTopRatedMovies = () => {
-        axios({
-            method: 'GET',
-            url: `${url}${topRatedMoviesUrl}`,
-            params: {
-                api_key: key,
-                // total_results: 10
-            }
-        }).then((apiData) => {
-            const topRatedMoviesDataArray = apiData.data.results;
-           
-            // THIS FOR LOOP CREATES A NEW ARRAY WITH 10 ITEMS
-            for ( let i = 0; i < 10; i++) {
-                topRatedMovie.push(topRatedMoviesDataArray[i]);
-            }   
-            setShowTopRatedMovies(topRatedMovie);            
-        });
-    };
+     useEffect(() => {
+        const topRatedMovie = [];
+            axios({
+                method: 'GET',
+                url: `${url}${topRatedMoviesUrl}`,
+                params: {
+                    api_key: key,
+                }
+            }).then((apiData) => {
+                const topRatedMoviesDataArray = apiData.data.results;            
+               
+                // THIS FOR LOOP CREATES A NEW ARRAY WITH 10 ITEMS
+                for ( let i = 0; i < 10; i++) {
+                    topRatedMovie.push(topRatedMoviesDataArray[i]);
+                }   
+                setShowTopRatedMovies(topRatedMovie);            
+            });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     //API CALL FOR UPCOMING MOVIES
-    const fetchUpcomingMovies = () => {
+    useEffect(() => {
+        const upcomingMovies = [];
         axios({
             method: 'GET',
             url: `${url}${upcomingMoviesUrl}`,
@@ -54,64 +56,92 @@ export const MovieProvider = ({children}) => {
                 api_key: key,
             }
         }).then((apiData) => {
-            const upcomingMoviesDataArray = apiData.data.results;
+            const upcomingMoviesDataArray = apiData.data.results;            
 
             for (let i = 0; i < 10; i++ ) {
                 upcomingMovies.push(upcomingMoviesDataArray[i]);
             }
             setShowUpcomingMovies(upcomingMovies);    
         });
-    };
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     //API CALL FOR MOVIES BY GENRE
-    const fetchMoviesByGenre = () => {
+    const handleCategoryChange = (e) => {
+        setMovieGenreId(e.target.value);     
+    };
+
+    const handleMovieGenreSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    //Populate genre select
+    useEffect(() => {
         axios({
             method: 'GET',
-            url: `${url}${moviesByGenreUrl}`,
+            url: `${url}${moviesGenreNameUrl}`,
             params: {
                 api_key: key,
-                name: 'Action'
+                // id: movieCategoryChoice
             }
         }).then((apiData) => {            
-            setShowMoviesByGenre( apiData.data.genres);    
+            setGenreCategories(apiData.data.genres);  
         });
-    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]) 
+
+    //Display movies by genre
+    useEffect(() => {
+        if(movieGenreId){
+            axios({
+                method: 'GET',
+                url: `${url}${moviesByGenreUrl}`,
+                params: {
+                    api_key: key,
+                    with_genres: movieGenreId
+                }
+            }).then((apiData) => {            
+                setMovieCategoryChoice(apiData.data.results);    
+            });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[movieGenreId]);    
+   
 
     //------------------------------- MOVIES -------------------------
 
+    
     //------------------------------- SHOWS -------------------------
-    const fetchTopRatedShows = () => {
-        axios({
-            method: 'GET',
-            url: `${url}${topRatedShowsUrl}`,
-            params: {
-                api_key: key,
-                name: 'Action'
-            }
-        }).then((apiData) => {  
-            const topRatedShowsDataArray = apiData.data.results;
-
-            for (let i = 0; i < 10; i++) {
-                topRatedShowsArray.push(topRatedShowsDataArray);
-            };
-            setTopRatedShows(topRatedShowsArray);   
-        
-        });
-    };
+    //API CALL FOR TOP RATED SHOWS
+    // useEffect(() => {
+    //         axios({
+    //             method: 'GET',
+    //             url: `${url}${topRatedShowsUrl}`,
+    //             params: {
+    //                 api_key: key,
+    //                 page: 1,
+    //             }
+    //         }).then((apiData) => {  
+    //             const topRatedShowsDataArray = apiData.data.results;   
+    //             const topRatedShowsArray = topRatedShowsDataArray.filter((el, index) => {
+    //                 return index < 10;
+    //             })
+    //             setTopRatedShows(topRatedShowsArray);          
+    //         });
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    //     }, []);
 
     //------------------------------- SHOWS -------------------------
 
     return (
         <MovieContext.Provider value={{
-          fetchTopRatedMovies,
           showTopRatedMovies,
-          fetchUpcomingMovies,
           showUpcomingMovies,
-          fetchMoviesByGenre,
-          showMoviesByGenre,
-          fetchTopRatedShows,
-          topRatedShows
+          genreCategories,
+          handleCategoryChange,
+          handleMovieGenreSubmit,
+          movieCategoryChoice,
+        //   topRatedShows
 
         }}
         >

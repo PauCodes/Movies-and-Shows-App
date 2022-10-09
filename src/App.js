@@ -9,10 +9,12 @@ import ShowsSection from './components/Shows/ShowsSection';
 import BackBtn from './components/UI/BackBtn';
 import TopRatedShows from './components/Shows/TopRatedShows';
 import { MovieProvider } from './context/MovieContext';
+import { ShowProvider } from './context/ShowContext';
 
 function App() {
   return (
     <MovieProvider>
+      <ShowProvider>
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />}/>   
@@ -25,6 +27,7 @@ function App() {
           <Route path='/shows/top_rated' element={<TopRatedShows />}/>
         </Routes>     
       </div>
+      </ShowProvider>
     </MovieProvider>
   );
 }

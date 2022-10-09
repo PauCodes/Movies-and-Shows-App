@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 
 const TopRatedMovies = () => {
 
-    const { showTopRatedMovies } = useContext(MovieContext);
+    const { showTopRatedMovies } = useContext(MovieContext);        
     
     const displayTopRatedMovies = showTopRatedMovies.map((movie, index) => {
         const imgUrl = 'https://image.tmdb.org/t/p/original';
