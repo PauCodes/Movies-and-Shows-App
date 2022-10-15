@@ -1,30 +1,4 @@
-/* .topRatedMoviesSection {
-  background-color: tomato;
-}
-
-.topRatedMoviesSection .wrapper {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.topRatedMoviesSection h2 {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 1.7rem;
-  letter-spacing: 0.3rem;
-}
-
-.topRatedMoviesSection .topRatedList {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 40px 20px;
-}
-
-.topRatedMoviesSection .topRatedMovieContainer {
+/* .movieContainer {
   width: 350px;
   align-self: stretch;
   margin: 15px;
@@ -33,18 +7,18 @@
   position: relative;
 }
 
-.topRatedMovieContainer:hover .topRatedImg {
+.movieContainer:hover .movieImg {
   opacity: 0.1;
 }
 
-.topRatedMoviesSection .topRatedImg {
+.movieImg {
   width: 100%;
   height: 400px;
   object-fit: cover;
   transition: 0.5s ease;
 }
 
-.topRatedMovieContainer .middleText {
+.movieContainer .middleText {
   width: 350px;
   height: 400px;
   padding: 0 30px;
@@ -70,11 +44,11 @@
   font-weight: bold;
 }
 
-.topRatedMovieContainer:hover .middleText {
+.movieContainer:hover .middleText {
   opacity: 1;
 }
 
-.topRatedMovieContainer .middleText {
+.movieContainer .middleText {
   border-radius: 10px;
   color: black;
   font-size: 1.3rem;

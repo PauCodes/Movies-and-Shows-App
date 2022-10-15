@@ -1,7 +1,9 @@
-import styles from './TopRatedShows.module.css';
+// import styles from './TopRatedShows.module.css';
 import ShowContext from '../../context/ShowContext';
 import { useContext } from 'react';
 import Card from '../UI/Card';
+import styles from "../UI/DisplayMoviesAndShows.module.css";
+
 
 const TopRatedShows = () => {
     const { topRatedShows } = useContext(ShowContext);    
@@ -9,13 +11,13 @@ const TopRatedShows = () => {
     const displayTopRatedShows = topRatedShows.map((show, index) => {
         const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-        return <Card key={index} className={styles.topRatedShowContainer}>
-                    <li className={styles.topRatedItem} >       
-                        <img className={styles.topRatedImg} src={`${imgUrl}${show.backdrop_path}`} alt={`Poster of the show ${show.name}`}/>         
+        return <Card key={index} className={styles.container}>
+                    <li className={styles.listItem} >       
+                        <img className={styles.itemImg} src={`${imgUrl}${show.backdrop_path}`} alt={`Poster of the show ${show.name}`}/>         
                         <div className={styles.middleText}>
                             <div>
                                 <h3>{show.name}</h3>
-                                <p className={styles.topRatedVote}>{show.vote_average}</p>
+                                <p className={styles.itemVote}>{show.vote_average}</p>
                                 <p>{show.overview}</p>
                             </div>
                         </div>
@@ -24,10 +26,10 @@ const TopRatedShows = () => {
     })
 
     return (
-        <section className={styles.topRatedShowSection}>
+        <section className={styles.section}>
             <div className={styles.wrapper}>
                 <h2>Top Rated Shows</h2>
-                <ul className={styles.topRatedList}>{displayTopRatedShows}</ul>
+                <ul className={styles.list}>{displayTopRatedShows}</ul>
             </div>
         </section>
     );

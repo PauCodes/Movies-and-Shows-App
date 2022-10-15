@@ -13,7 +13,7 @@ const MoviesSection = () => {
                     <Link to='/movies/top_rated'><Button>Top Rated</Button></Link>
                     <Link to='/movies/upcoming'><Button >Upcoming</Button></Link>
                     <Link to='/movies/by_genre'><Button>By Genre</Button></Link>
-                    <Link to='/'><BackBtn/></Link>
+                    <Link to='/'><BackBtn/></Link> 
                 </div>
             </div>
         </section>

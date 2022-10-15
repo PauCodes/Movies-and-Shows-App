@@ -1,53 +1,56 @@
-/* .topRatedMoviesSection {
+.section {
   background-color: tomato;
+  height: 100vh;
+  overflow: auto;
 }
 
-.topRatedMoviesSection .wrapper {
+.section .wrapper {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
 
-.topRatedMoviesSection h2 {
+.section h2 {
   text-align: center;
   padding-top: 20px;
   font-size: 1.7rem;
   letter-spacing: 0.3rem;
 }
 
-.topRatedMoviesSection .topRatedList {
+.section .list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 40px 20px;
 }
 
-.topRatedMoviesSection .topRatedMovieContainer {
+/* yellow #f3bd32 */
+.container {
   width: 350px;
   align-self: stretch;
   margin: 15px;
-  padding: 40px;
+  padding: 30px;
   background-color: #4b9ec4;
   position: relative;
 }
 
-.topRatedMovieContainer:hover .topRatedImg {
+.container:hover .itemImg {
   opacity: 0.1;
 }
 
-.topRatedMoviesSection .topRatedImg {
+.itemImg {
   width: 100%;
-  height: 400px;
   object-fit: cover;
   transition: 0.5s ease;
 }
 
-.topRatedMovieContainer .middleText {
-  width: 350px;
+.container .middleText {
+  width: 90%;
   height: 400px;
-  padding: 0 30px;
+  /* padding: 0 40px; */
+  padding: 10px;
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -60,9 +63,13 @@
 }
 
 .middleText h3,
-.middleText .topRatedVote {
+.middleText .itemVote {
   font-size: 1.2rem;
   margin-bottom: 10px;
+}
+
+.middleText .itemVote {
+  border-bottom: 2px dotted black;
 }
 
 .middleText p {
@@ -70,12 +77,29 @@
   font-weight: bold;
 }
 
-.topRatedMovieContainer:hover .middleText {
+.container:hover .middleText {
   opacity: 1;
 }
 
-.topRatedMovieContainer .middleText {
+.container .middleText {
   border-radius: 10px;
   color: black;
   font-size: 1.3rem;
-} */
+}
+
+@media (max-width: 465px) {
+  .container {
+    margin: 15px 0;
+    padding: 10px;
+  }
+  /* .container .middleText {
+    padding: 10px 50px;
+  } */
+}
+
+@media (max-width: 375px) {
+  .container .middleText {
+    width: 100%;
+    height: 350px;
+  }
+}

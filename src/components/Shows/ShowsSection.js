@@ -10,7 +10,7 @@ const ShowsSection = () => {
             <div className={styles.wrapper}>
                 <div className={styles.options}>
                     <Link to='/shows/top_rated'><Button>Top Rated</Button></Link>
-                    <Link to='/by_genre'><Button>By Genre</Button></Link>
+                    <Link to='/shows/by_genre'><Button>By Genre</Button></Link>
                     <Link to='/'><BackBtn/></Link>
                 </div>
             </div>

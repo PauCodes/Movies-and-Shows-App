@@ -10,6 +10,7 @@ import BackBtn from './components/UI/BackBtn';
 import TopRatedShows from './components/Shows/TopRatedShows';
 import { MovieProvider } from './context/MovieContext';
 import { ShowProvider } from './context/ShowContext';
+import ByGenreShows from './components/Shows/ByGenreShows';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/movies/upcoming' element={<UpcomingMovies />}/>
           <Route path='/movies/by_genre' element={<ByGenreMovies />}/>
           <Route path='/shows/top_rated' element={<TopRatedShows />}/>
+          <Route path='/shows/by_genre' element={<ByGenreShows />}/>
         </Routes>     
       </div>
       </ShowProvider>

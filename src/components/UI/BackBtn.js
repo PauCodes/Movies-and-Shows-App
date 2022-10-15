@@ -1,13 +1,8 @@
 import styles from './BackBtn.module.css';
 
-
 const BackBtn = () => {
-
-
     return (
-        <>
-        <button  className={styles.backBtn}>X</button>
-        </>
+        <button className={styles.backBtn}>X</button>
     );
 };
 
