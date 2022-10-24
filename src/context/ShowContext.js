@@ -4,8 +4,8 @@ import axios from "axios";
 const ShowContext  = createContext();
 
 export const ShowProvider = ({children}) => {
-    const url = process.env.REACT_APP_BASE_ENDPOINT;
-    const key = process.env.REACT_APP_KEY;  
+    const url = 'https://api.themoviedb.org/';
+    const key = '4088273d8a680cca4969b5d5cca32501';  
 
     const topRatedShowsUrl = '3/tv/top_rated';
     const showsGenreNameUrl = '3/genre/tv/list';
