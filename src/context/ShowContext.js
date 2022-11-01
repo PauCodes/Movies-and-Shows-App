@@ -1,9 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import MovieContext from "../context/MovieContext";
+
 
 const ShowContext  = createContext();
 
 export const ShowProvider = ({children}) => {
+
+    const { showInfoHandler, closeMoreInfoHandler, showModal, itemSelected} = useContext(MovieContext);
+
     const url = 'https://api.themoviedb.org/';
     const key = '4088273d8a680cca4969b5d5cca32501';  
 
@@ -75,7 +80,6 @@ export const ShowProvider = ({children}) => {
                     showChoiceList.push(showChoiceDataArray[i]);
                 }
                 setShowCategoryChoice(showChoiceList);
-                
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +92,11 @@ export const ShowProvider = ({children}) => {
             handleCategoryChange,
             handleShowGenreSubmit,
             showCategoryChoice,
-            setShowCategoryChoice
+            setShowCategoryChoice,
+            showInfoHandler,
+            closeMoreInfoHandler,
+            showModal,
+            itemSelected
         }}
         >
             {children}

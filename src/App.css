@@ -293,6 +293,7 @@ ul {
   bottom: 30px;
   right: 40px;
   font-size: 2rem;
+  pointer-events: none;
 }
 
 @media (max-width: 465px) {

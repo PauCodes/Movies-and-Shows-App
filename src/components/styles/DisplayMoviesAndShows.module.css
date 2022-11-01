@@ -12,9 +12,13 @@
 
 .section h2 {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 80px;
   font-size: 1.7rem;
   letter-spacing: 0.3rem;
+}
+
+span {
+  font-size: 3rem;
 }
 
 .section .list {
@@ -26,7 +30,6 @@
   padding: 40px 20px;
 }
 
-/* yellow #f3bd32 */
 .container {
   width: 350px;
   align-self: stretch;
@@ -37,7 +40,7 @@
 }
 
 .container:hover .itemImg {
-  opacity: 0.1;
+  opacity: 0.5;
 }
 
 .itemImg {
@@ -46,55 +49,18 @@
   transition: 0.5s ease;
 }
 
-.container .middleText {
-  width: 90%;
-  height: 400px;
-  /* padding: 0 40px; */
-  padding: 10px;
-  transition: 0.5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-  overflow: scroll;
-}
-
-.middleText h3,
-.middleText .itemVote {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.middleText .itemVote {
-  border-bottom: 2px dotted black;
-}
-
-.middleText p {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.container:hover .middleText {
-  opacity: 1;
-}
-
-.container .middleText {
-  border-radius: 10px;
-  color: black;
-  font-size: 1.3rem;
-}
-
 @media (max-width: 465px) {
   .container {
     margin: 15px 0;
     padding: 10px;
   }
-  /* .container .middleText {
-    padding: 10px 50px;
-  } */
+
+  .section .list {
+    padding: 40px 0;
+  }
+  .genreSelect {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 375px) {

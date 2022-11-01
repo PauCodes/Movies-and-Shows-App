@@ -5,6 +5,7 @@ const MovieContext = createContext();
 
 export const MovieProvider = ({children}) => {
 
+
     const url = 'https://api.themoviedb.org/';
     const key = '4088273d8a680cca4969b5d5cca32501';   
         
@@ -19,7 +20,9 @@ export const MovieProvider = ({children}) => {
     const [ showUpcomingMovies, setShowUpcomingMovies ] = useState([]);
     const [ genreCategories, setGenreCategories ] = useState([]);
     const [ movieCategoryChoice, setMovieCategoryChoice ] = useState([]);
-    const [ movieGenreId, setMovieGenreId ] = useState(null)
+    const [ movieGenreId, setMovieGenreId ] = useState(null);
+    const [ showModal, setShowModal ] = useState(false);
+    const [ itemSelected, setItemSelected ] = useState(null);
   
     //API CALL FOR TOP RATED MOVIES
      useEffect(() => {
@@ -103,11 +106,21 @@ export const MovieProvider = ({children}) => {
                     movieChoiceList.push(movieChoiceDataArray[i]);
                 }
                 setMovieCategoryChoice(movieChoiceList);
+                
             });
             
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[movieGenreId]);    
+    },[movieGenreId]);   
+    
+    const showInfoHandler = (elValue) => {
+        setShowModal(true);
+        setItemSelected(elValue);        
+    };
+
+    const closeMoreInfoHandler = () => {
+        setShowModal(false);
+    };
 
 
     return (
@@ -118,7 +131,11 @@ export const MovieProvider = ({children}) => {
           handleCategoryChange,
           handleMovieGenreSubmit,
           movieCategoryChoice,
-          setMovieCategoryChoice
+          setMovieCategoryChoice,
+          showInfoHandler,
+          closeMoreInfoHandler,
+          showModal, 
+          itemSelected
         }}
         >
             {children}

@@ -1,0 +1,142 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  max-height: 90vh;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: scroll;
+}
+
+.header {
+  background: #ffd400;
+  padding: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.header h3 {
+  font-size: 2rem;
+  margin: 0;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.itemVote {
+  font-size: 1.3rem;
+  width: 60px;
+  height: 60px;
+  border: 3px solid white;
+  background-color: tomato;
+  border-radius: 50%;
+  color: white;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -30px;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.content p {
+  margin-top: 20px;
+}
+
+.actions {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal button {
+  width: 100px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid #ffd400;
+  background: #ffd400;
+  color: white;
+  border-radius: 15px;
+  transition: background 0.5s ease-out;
+}
+
+.modal button:hover,
+.modal button:active {
+  background: white;
+  color: #ffd400;
+  border: 2px solid #ffd400;
+}
+
+@media (min-width: 875px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}
+
+@media (max-width: 765px) {
+  .content p,
+  .itemVote {
+    font-size: 1rem;
+  }
+
+  .header {
+    padding: 1.7rem 1rem;
+  }
+  .itemVote {
+    width: 50px;
+    height: 50px;
+  }
+  .header h3 {
+    font-size: 1.5rem;
+  }
+  .modal button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 625px) {
+  .modal {
+    width: 90%;
+    left: 5%;
+  }
+
+  .header h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .content,
+  .actions {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .header h3 {
+    font-size: 1rem;
+  }
+  .content p {
+    font-size: 0.9rem;
+  }
+}

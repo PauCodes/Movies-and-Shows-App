@@ -12,6 +12,7 @@ import { MovieProvider } from './context/MovieContext';
 import { ShowProvider } from './context/ShowContext';
 import ByGenreShows from './components/Shows/ByGenreShows';
 
+
 function App() {
   return (
     <MovieProvider>

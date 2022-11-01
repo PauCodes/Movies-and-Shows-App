@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
 import BackBtn from '../UI/BackBtn';
-import styles from './ShowsSection.module.css';
+import styles from '../styles/ShowsSection.module.css';
 
 const ShowsSection = () => {
 
@@ -11,8 +11,8 @@ const ShowsSection = () => {
                 <div className={styles.options}>
                     <Link to='/shows/top_rated'><Button>Top Rated</Button></Link>
                     <Link to='/shows/by_genre'><Button>By Genre</Button></Link>
-                    <Link to='/'><BackBtn/></Link>
                 </div>
+                <Link to='/'><BackBtn/></Link>
             </div>
         </section>
     );

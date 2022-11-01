@@ -1,8 +1,8 @@
-import styles from './BackBtn.module.css';
+import styles from '../styles/BackBtn.module.css';
 
-const BackBtn = () => {
+const BackBtn = (props) => {
     return (
-        <button className={styles.backBtn}>X</button>
+        <button className={`${styles.backBtn} ${props.className}`}>Home</button>
     );
 };
 

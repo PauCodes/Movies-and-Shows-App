@@ -1,12 +1,15 @@
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import DisplayByGenreMovie from './DisplayByGenreMovies';
-import BackBtn from "../UI/BackBtn";
 import MovieContext from "../../context/MovieContext";
-import styles from '../Shows/ByGenreMovies&Shows.module.css';
+import styles from '../styles/ByGenreMovies&Shows.module.css';
+import MoreInfoModal from "../UI/MoreInfoModal";
+import { Link } from "react-router-dom";
+import BackBtn from "../UI/BackBtn";
+
 
 const ByGenreMovies = () => {
-    const { genreCategories, handleCategoryChange, handleMovieGenreSubmit, movieCategoryChoice, setMovieCategoryChoice } = useContext(MovieContext);
+    const { genreCategories, handleCategoryChange, handleMovieGenreSubmit, movieCategoryChoice, setMovieCategoryChoice, showModal, itemSelected } = useContext(MovieContext);    
+    
 
     const moviesGenre = genreCategories.map((genre) => {
         return <option key={genre.id} value={genre.id}>{genre.name}</option>
@@ -23,7 +26,9 @@ const ByGenreMovies = () => {
     return (
         <section className={styles.section}>
             <div className={styles.wrapper}>
-                <h2>Movies by Genre</h2>
+            <Link to='/'><BackBtn className={styles.homeBtn}/></Link> 
+
+                <h2><span>M</span>ovies <span>B</span>y <span>G</span>enre</h2>
                 <form className={styles.genreForm} onSubmit={handleMovieGenreSubmit}>
                     <div className={styles.arrowContainer}>
                         <i className={`fa-solid fa-caret-down`}></i>
@@ -34,9 +39,11 @@ const ByGenreMovies = () => {
                         </select>
                     </div>
                 </form>     
-                <ul className={styles.list}>{showMoviesByGenre}</ul> 
-                <Link to='/'><BackBtn/></Link>                  
+                <ul className={styles.list}>{showMoviesByGenre}</ul>                
             </div>
+            
+            { showModal && <MoreInfoModal name={itemSelected.title} vote={itemSelected.vote_average} overview={itemSelected.overview}/>}
+
         </section>      
     );
 };
