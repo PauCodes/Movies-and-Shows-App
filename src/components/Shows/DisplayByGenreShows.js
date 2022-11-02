@@ -11,11 +11,10 @@ const DisplayByGenreShow = ({data}) => {
     return (
         <>
             <Card className={styles.container} onClick={() => showInfoHandler(data)}>
-                <li className={styles.lisItem} >       
+                <li className={styles.item} >       
                     <img className={styles.itemImg} src={`${imgUrl}${data.poster_path}`} alt={`Poster of the movie ${data.name}`}/>         
                 </li>
             </Card>
-            
         </>
     );
 };

@@ -13,7 +13,7 @@ const UpcomingMovies = () => {
     const displayUpcomingMovies = showUpcomingMovies.map((movie, index) => {
         const imgUrl = 'https://image.tmdb.org/t/p/original';
         return <Card key={index} className={styles.container} onClick={() => showInfoHandler(movie)}> 
-                    <li className={styles.lisItem}>
+                    <li className={styles.item}>
                         <img className={styles.itemImg} src={`${imgUrl}${movie.poster_path}`} alt={`Poster of the movie ${movie.title}`}/>
                     </li>
                 </Card>

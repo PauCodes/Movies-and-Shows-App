@@ -39,6 +39,10 @@ span {
   position: relative;
 }
 
+.item {
+  cursor: pointer;
+}
+
 .container:hover .itemImg {
   opacity: 0.5;
 }
@@ -47,6 +51,12 @@ span {
   width: 100%;
   object-fit: cover;
   transition: 0.5s ease;
+}
+
+@media (max-width: 1024px) {
+  .container:hover .itemImg {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 465px) {
